@@ -1,4 +1,4 @@
-// You will add code in this file
+// pass props in this file to
 import React, { useState } from "react";
 import CommentSection from "../CommentSection/CommentSectionContainer";
 import LikeSection from "./LikeSection";
@@ -9,13 +9,8 @@ import "./Posts.css";
 // pass props in this file to
 const Post = props => {
   // set up state for the likes
-
-  const [numberOfLikes, setNumberOfLikes] = useState(0);
-  console.log(numberOfLikes);
-
-  function likePlusOne() {
-    setNumberOfLikes(numberOfLikes + 1);
-  }
+  const [likes, setLikes] = useState(props.post.likes);
+  const addLikes = () => setLikes(likes + 1);
 
   return (
     <div className="post-border">
@@ -27,18 +22,18 @@ const Post = props => {
         thumbnailUrl={props.post.thumbnailUrl}
       />
       <div className="post-image-wrapper">
-        <img
-          alt="post thumbnail"
-          className="post-image"
-          src={props.post.imageUrl}
-        />
+        <img alt="post thumbnail" className="post-image" src={props.post.imageUrl} />
       </div>
-      <LikeSection />
-      <LikeSection numberOfLikes={numberOfLikes} likeFunc={likePlusOne} />
-      <CommentSection
-        postId={props.post.imageUrl}
-        comments={props.post.comments}
-      />
+      <p className="timestamp">{props.post.timestamp}</p>
+      <LikeSection likes={likes} incrementLikes={addLikes} />
+      <CommentSection postId={props.post.imageUrl} comments={props.post.comments} />
+
+
+     
+    </div>
+
+  );
+};
 
 export default Post;
 
