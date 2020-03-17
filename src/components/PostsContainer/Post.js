@@ -39,9 +39,6 @@ const Post = props => {
         postId={props.post.imageUrl}
         comments={props.post.comments}
       />
-    </div>
-  );
-};
 
 export default Post;
 
