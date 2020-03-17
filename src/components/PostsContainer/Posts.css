@@ -54,3 +54,10 @@
   margin: 15px 0px;
   font-size: 16px;
 }
+
+.timestamp {
+font-size: 10px;
+display: flex;
+justify-content: flex-start;
+margin-left: 15px;
+}
